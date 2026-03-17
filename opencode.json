@@ -4,10 +4,10 @@
   "model": "opencode/claude-opus-4-6",
   "agent": {
     "build": {
-      "model": "opencode/claude-opus-4-6"
+      "model": "opencode/claude-sonnet-4-6"
     },
     "plan": {
-      "model": "opencode/claude-sonnet-4-6"
+      "model": "opencode/claude-opus-4-6"
     },
     "general": {
       "model": "opencode/claude-sonnet-4-6",

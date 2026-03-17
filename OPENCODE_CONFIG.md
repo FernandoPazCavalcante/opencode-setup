@@ -8,8 +8,8 @@ Global config: `~/.config/opencode/opencode.json`
 
 | Agent | Model | Role | Cost (per 1M tokens) |
 |-------|-------|------|---------------------|
-| **build** | Claude Opus 4.6 | Primary - code generation & edits | $5 in / $25 out |
-| **plan** | Claude Sonnet 4.6 | Primary - analysis without edits | $3 in / $15 out |
+| **build** | Claude Sonnet 4.6 | Primary - code generation & edits | $3 in / $15 out |
+| **plan** | Claude Opus 4.6 | Primary - analysis without edits | $5 in / $25 out |
 | **general** | Claude Sonnet 4.6 | Primary + Subagent (`mode: all`) - research & multi-step tasks | $3 in / $15 out |
 | **explore** | Claude Haiku 4.5 | Primary + Subagent (`mode: all`) - read-only codebase search | $1 in / $5 out |
 | **title** | Claude Haiku 4.5 | System - session title generation | $1 in / $5 out |
@@ -25,8 +25,8 @@ Global config: `~/.config/opencode/opencode.json`
 
 ## Rationale
 
-- **Build (Opus 4.6):** Highest quality model for the primary task — writing and editing code. This is where quality matters most.
-- **Plan (Sonnet 4.6):** Analysis and code review don't need Opus-level intelligence. Sonnet is 40% cheaper and excellent for planning.
+- **Build (Sonnet 4.6):** Sonnet 4.6 is excellent at code generation. Build produces the most output tokens, so using Sonnet here saves the most (40% cheaper output vs Opus).
+- **Plan (Opus 4.6):** Architecture and planning decisions benefit from Opus-level reasoning. Planning is input-heavy with shorter outputs, so the cost impact is lower.
 - **General (Sonnet 4.6, `mode: all`):** Multi-step research tasks. Tab-switchable so you can use it as a primary agent, and still available as a subagent. Sonnet handles these well at 40% less cost.
 - **Explore (Haiku 4.5, `mode: all`):** Read-only file search, grep, glob. Tab-switchable for quick codebase exploration, and still available as a subagent. Haiku is more than capable at 80% cheaper.
 - **Title/Summary (Haiku 4.5):** Trivial tasks (5-word titles, short summaries). 80% cheaper.
@@ -57,10 +57,10 @@ Assuming subagents and system agents consume ~40% of total tokens:
   "model": "opencode/claude-opus-4-6",
   "agent": {
     "build": {
-      "model": "opencode/claude-opus-4-6"
+      "model": "opencode/claude-sonnet-4-6"
     },
     "plan": {
-      "model": "opencode/claude-sonnet-4-6"
+      "model": "opencode/claude-opus-4-6"
     },
     "general": {
       "model": "opencode/claude-sonnet-4-6",
@@ -87,4 +87,4 @@ Assuming subagents and system agents consume ~40% of total tokens:
 
 ## Last Updated
 
-March 12, 2026
+March 17, 2026
