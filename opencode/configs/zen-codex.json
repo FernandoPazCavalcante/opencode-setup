@@ -10,13 +10,13 @@
   },
   "agent": {
     "build": {
-      "model": "opencode/claude-sonnet-4-6"
+      "model": "opencode/gpt-5.1-codex"
     },
     "plan": {
       "model": "opencode/claude-opus-4-6"
     },
     "general": {
-      "model": "opencode/claude-sonnet-4-6",
+      "model": "opencode/gpt-5.1-codex",
       "mode": "all",
       "steps": 15
     },
